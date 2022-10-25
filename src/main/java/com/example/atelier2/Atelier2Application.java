@@ -1,7 +1,7 @@
 package com.example.atelier2;
 
-import com.example.atelier2.Entity.Candidate;
-import com.example.atelier2.Repository.CandidatRepository;
+import com.example.atelier2.Entity.Stock;
+import com.example.atelier2.Repository.StockRepository;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,10 +19,10 @@ public class Atelier2Application {
     }
 
     @Bean
-    ApplicationRunner init(CandidatRepository repository) {
+    ApplicationRunner init(StockRepository repository) {
         return args -> {
-            Stream.of("Amine", "salah", "Mohamed" , "shayma").forEach(nom -> {
-                repository.save(new Candidate(nom));
+            Stream.of("S-delice", "S-Saida", "S-Vitalait" , "S-OMO").forEach(libelleStock -> {
+                repository.save(new Stock(libelleStock));
             });
             repository.findAll().forEach(System.out::println);
         };
